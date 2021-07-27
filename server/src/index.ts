@@ -3,7 +3,7 @@ import "dotenv-safe/config";
 import express from "express";
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
-import { __port__ } from "./lib/constants";
+import { __clientUri__, __port__ } from "./lib/constants";
 import { HelloResolver } from "./resolvers/hello";
 
 (async () => {
@@ -16,7 +16,10 @@ import { HelloResolver } from "./resolvers/hello";
 		})
 	});
 
-	server.applyMiddleware({ app });
+	server.applyMiddleware({
+		app,
+		cors: { origin: __clientUri__, credentials: true }
+	});
 
 	app.listen(__port__, () =>
 		console.log(
