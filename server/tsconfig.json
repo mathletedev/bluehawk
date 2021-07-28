@@ -11,6 +11,7 @@
 		"esModuleInterop": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
+		"strictPropertyInitialization": false,
 		"resolveJsonModule": true
 	},
 	"include": ["src/**/*.ts"],
